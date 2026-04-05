@@ -64,15 +64,15 @@ const CSVUpload = () => {
 
   useEffect(() => {
     fetchDropdownData();
+    fetchTemplate("schedule_entries");
+  }, []);
+
+  useEffect(() => {
     if (activeTab === "history") {
       fetchUploadHistory();
       fetchStats();
     }
   }, [activeTab]);
-
-  useEffect(() => {
-    fetchTemplate("schedule_entries");
-  }, []);
 
   const fetchDropdownData = async () => {
     try {
@@ -986,7 +986,7 @@ const CSVUpload = () => {
                   </button>
                 )}
 
-                {/* Conflict Analysis Display - This will now show conflicts */}
+                {/* Conflict Analysis Display */}
                 <ConflictAnalysisDisplay />
 
                 {/* Action Buttons */}

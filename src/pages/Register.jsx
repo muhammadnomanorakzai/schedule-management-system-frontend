@@ -311,8 +311,6 @@ const Register = () => {
           initial="hidden"
           animate="visible"
           className="backdrop-blur-xl bg-white/10 rounded-2xl shadow-2xl p-8 border border-white/20">
-          {/* Info Message */}
-
           {/* Error Alert */}
           {error && (
             <motion.div

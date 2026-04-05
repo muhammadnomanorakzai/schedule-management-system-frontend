@@ -3,21 +3,35 @@ import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import {
   FaHome,
+  FaUserGraduate,
   FaChalkboardTeacher,
   FaRocket,
+  FaChalkboard,
+  FaChartBar,
   FaBook,
   FaCalendarCheck,
   FaBuilding,
   FaListOl,
   FaGraduationCap,
+  FaUserCheck,
+  FaTrophy,
   FaListAlt,
   FaFileUpload,
   FaUsers,
+  FaChartLine,
   FaChevronDown,
   FaChevronRight,
   FaExclamationTriangle,
+  FaClipboardList,
   FaClock,
+  FaEdit,
+  FaFileAlt,
+  FaCalendarAlt,
+  FaLaptop,
+  FaMoneyBillAlt,
   FaTimes,
+  FaVideo,
+  FaPlus,
   FaCog,
   FaUserCog,
   FaUniversity,
@@ -50,6 +64,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     }));
   };
 
+  // Fetch pending approval count
   const fetchPendingCount = async () => {
     try {
       if (userInfo?.role === "Admin" && userInfo?.token) {
@@ -66,6 +81,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     }
   };
 
+  // Poll for pending approvals every 30 seconds
   useEffect(() => {
     if (userInfo?.role === "Admin") {
       fetchPendingCount();
@@ -109,6 +125,11 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
             label: "Teachers",
             icon: <FaChalkboardTeacher />,
             description: "Manage teacher profiles",
+          },
+          {
+            path: "/admin/timetables",
+            label: "Timetables",
+            icon: <FaCalendarCheck />,
           },
         ],
       },
@@ -212,6 +233,160 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         ],
       },
     ],
+    // Teacher: [
+    //   { path: "/teacher/dashboard", label: "Dashboard", icon: <FaHome /> },
+    //   {
+    //     path: "/teacher/live-classes",
+    //     label: "Live Classes",
+    //     icon: <FaVideo />,
+    //   },
+    //   { path: "/teacher/classes", label: "My Classes", icon: <FaChalkboard /> },
+    //   {
+    //     label: "Management",
+    //     icon: <FaTrophy />,
+    //     key: "teacher-management",
+    //     submenu: [
+    //       {
+    //         path: "/teacher/assignments",
+    //         label: "Assignments",
+    //         icon: <FaClipboardList />,
+    //       },
+    //       {
+    //         path: "/teacher/attendance",
+    //         label: "Mark Attendance",
+    //         icon: <FaUserCheck />,
+    //       },
+    //       { path: "/teacher/grades", label: "Add Grades", icon: <FaTrophy /> },
+    //       {
+    //         path: "/teacher/materials",
+    //         label: "Course Materials",
+    //         icon: <FaBook />,
+    //       },
+    //       { path: "/teacher/leave", label: "Apply Leave", icon: <FaClock /> },
+    //       {
+    //         path: "/teacher/exams/create",
+    //         label: "Create Exam",
+    //         icon: <FaLaptop />,
+    //       },
+    //     ],
+    //   },
+    //   {
+    //     label: "Reports",
+    //     icon: <FaChartLine />,
+    //     key: "teacher-reports",
+    //     submenu: [
+    //       {
+    //         path: "/teacher/reports/attendance",
+    //         label: "Attendance Report",
+    //         icon: <FaUserCheck />,
+    //       },
+    //       {
+    //         path: "/teacher/reports/generate",
+    //         label: "Generate Reports",
+    //         icon: <FaFileAlt />,
+    //       },
+    //     ],
+    //   },
+    // ],
+    // Student: [
+    //   { path: "/student/dashboard", label: "Dashboard", icon: <FaHome /> },
+    //   {
+    //     path: "/student/live-classes",
+    //     label: "Live Classes",
+    //     icon: <FaVideo />,
+    //   },
+    //   {
+    //     label: "Course Content",
+    //     icon: <FaBook />,
+    //     key: "student-course-content",
+    //     submenu: [
+    //       { path: "/student/subjects", label: "My Subjects", icon: <FaBook /> },
+    //       {
+    //         path: "/student/assignments",
+    //         label: "Assignments",
+    //         icon: <FaClipboardList />,
+    //       },
+    //       {
+    //         path: "/student/materials",
+    //         label: "Study Materials",
+    //         icon: <FaBook />,
+    //       },
+    //     ],
+    //   },
+    //   {
+    //     path: "/student/timetable",
+    //     label: "Timetable",
+    //     icon: <FaCalendarAlt />,
+    //   },
+    //   { path: "/student/exams", label: "Online Exams", icon: <FaLaptop /> },
+    //   { path: "/student/leave", label: "Apply Leave", icon: <FaClock /> },
+    //   {
+    //     label: "Academic",
+    //     icon: <FaTrophy />,
+    //     key: "student-academic",
+    //     submenu: [
+    //       { path: "/student/grades", label: "My Grades", icon: <FaTrophy /> },
+    //       {
+    //         path: "/student/attendance",
+    //         label: "My Attendance",
+    //         icon: <FaUserCheck />,
+    //       },
+    //       {
+    //         path: "/student/results",
+    //         label: "My Results",
+    //         icon: <FaChartLine />,
+    //       },
+    //     ],
+    //   },
+    // ],
+    // Parent: [
+    //   { path: "/parent/dashboard", label: "Dashboard", icon: <FaHome /> },
+    //   {
+    //     path: "/parent/live-classes",
+    //     label: "Live Classes",
+    //     icon: <FaVideo />,
+    //   },
+    //   {
+    //     path: "/parent/children",
+    //     label: "My Children",
+    //     icon: <FaUserGraduate />,
+    //   },
+    //   {
+    //     label: "Academic",
+    //     icon: <FaBook />,
+    //     key: "parent-academic",
+    //     submenu: [
+    //       { path: "/parent/grades", label: "All Grades", icon: <FaTrophy /> },
+    //       {
+    //         path: "/parent/attendance",
+    //         label: "Attendance",
+    //         icon: <FaUserCheck />,
+    //       },
+    //       {
+    //         path: "/parent/assignments",
+    //         label: "Assignments",
+    //         icon: <FaClipboardList />,
+    //       },
+    //     ],
+    //   },
+    //   {
+    //     label: "Reports",
+    //     icon: <FaFileAlt />,
+    //     key: "parent-reports",
+    //     submenu: [
+    //       {
+    //         path: "/parent/reports",
+    //         label: "View Reports",
+    //         icon: <FaFileAlt />,
+    //       },
+    //       {
+    //         path: "/parent/fees",
+    //         label: "Fee Payment",
+    //         icon: <FaMoneyBillAlt />,
+    //       },
+    //     ],
+    //   },
+    // ],
   };
 
   const currentNav = navStructure[userInfo?.role] || [];
